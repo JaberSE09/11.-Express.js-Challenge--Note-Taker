@@ -9,7 +9,8 @@
   "author": "Sajid Jaber",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.18.1",
+    "uuid": "^8.3.2"
   },
   "repository": {
     "type": "git",
