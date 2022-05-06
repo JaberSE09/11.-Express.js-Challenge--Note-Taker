@@ -1,14 +1,27 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "Note taking app",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Sajid Jaber",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.16.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaberSE09/11.-Express.js-Challenge--Note-Taker.git"
+  },
+  "keywords": [
+    "note",
+    "taking",
+    "app"
+  ],
+  "bugs": {
+    "url": "https://github.com/JaberSE09/11.-Express.js-Challenge--Note-Taker/issues"
+  },
+  "homepage": "https://github.com/JaberSE09/11.-Express.js-Challenge--Note-Taker#readme"
 }
