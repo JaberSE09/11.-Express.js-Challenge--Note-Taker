@@ -20,7 +20,16 @@ const indexHTML = path.join(__dirname, "public", "index.html");
 
 app.get("/notes", (req, res) => res.sendFile(notesHTML));
 app.get("*", (req, res) => res.sendFile(indexHTML));
-app.get("/api/notes", (req, res) => res.json(notes));
+app.get("/api/notes", (req, res) => {
+  fs.readFileSync(path.join(__dirname, "db", "db.json"), utf8, (err, data) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    return res.json(notes);
+  });
+});
 app.post("/api/notes", (req, res) => {
   req.body.id = uuid.v4();
 
