@@ -1,35 +1,36 @@
 const express = require("express");
-const PORT = process.env.PORT || 3001;
-const app = express();
 const path = require("path");
-const notes = require("./db/db.json");
 const fs = require("fs");
-const { createNewNote, validateNotes } = require("./lib/notes");
-const uuid = require("uuid");
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
-
-app.use(express.static("public"));
+const uuid = require('uuid');
+let app = express();
+let PORT = process.env.PORT || 3001;
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("public"));
+let notes = require("./db/db.json");
+const indexHTML = path.join(__dirname , "public" , "index.html" )
+const notesHTML = path.join(__dirname , "public" , "notes.html" )
+const {createNewNote , validateNotes} = require("./lib/notes")
 
-const notesHTML = path.join(__dirname, "public", "notes.html");
-const indexHTML = path.join(__dirname, "public", "index.html");
 
-app.get("/notes", (req, res) => res.sendFile(notesHTML));
-app.get("*", (req, res) => res.sendFile(indexHTML));
-app.get("/api/notes", (req, res) => {
-  fs.readFileSync(path.join(__dirname, "db", "db.json"), utf8, (err, data) => {
+app.get("/notes",  (req, res) => {
+  res.sendFile(notesHTML);
+});
+
+app.get("/api/notes",  (req, res) => {
+  fs.readFile("db/db.json", "utf8",  (err, data) => {
     if (err) {
       console.log(err);
       return;
     }
-
-    return res.json(notes);
+    res.json(notes);
   });
 });
+
+app.listen(PORT,  () => {
+  console.log(`Start the app on http://localhost:${PORT}` );
+});
+
 app.post("/api/notes", (req, res) => {
   req.body.id = uuid.v4();
 
@@ -41,6 +42,9 @@ app.post("/api/notes", (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`API server now on port http://localhost:${PORT}`);
+app.delete("/api/notes/:id", function (req, res) {
+});
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(indexHTML));
 });
