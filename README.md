@@ -33,6 +33,11 @@ Go to
 ```text
 http://localhost:3001
 ```
+or through heroku
+
+```text 
+https://immense-basin-50407.herokuapp.com/
+```
 
 ## Usage
 
