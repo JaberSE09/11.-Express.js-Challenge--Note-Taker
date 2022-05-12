@@ -36,6 +36,8 @@ http://localhost:3001
 
 ## Usage
 
+https://user-images.githubusercontent.com/15232220/167972575-f4928bc0-7ef3-4d90-9e63-8d23beace54b.mp4
+
 ## Credits
 
 Sajid Jaber
