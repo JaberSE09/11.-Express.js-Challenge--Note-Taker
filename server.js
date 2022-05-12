@@ -1,3 +1,4 @@
+//setup variables
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
@@ -11,11 +12,11 @@ let notes = require("./db/db.json");
 const indexHTML = path.join(__dirname, "public", "index.html");
 const notesHTML = path.join(__dirname, "public", "notes.html");
 const { createNewNote, validateNotes } = require("./lib/notes");
-
+//route to notes.html
 app.get("/notes", (req, res) => {
   res.sendFile(notesHTML);
 });
-
+//route to get the notes from file
 app.get("/api/notes", (req, res) => {
   fs.readFile("db/db.json", "utf8", (err, data) => {
     if (err) {
@@ -26,10 +27,13 @@ app.get("/api/notes", (req, res) => {
   });
 });
 
+
+//starts the app
 app.listen(PORT, () => {
   console.log(`Start the app on http://localhost:${PORT}`);
 });
 
+//takes in the new note and adds it to file
 app.post("/api/notes", (req, res) => {
   req.body.id = uuid.v4();
 
@@ -41,6 +45,7 @@ app.post("/api/notes", (req, res) => {
   }
 });
 
+//delete the note selected
 app.delete("/api/notes/:id", (req, res) => {
   notes.splice(req.params.id, 1);
   fs.writeFileSync(
