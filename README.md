@@ -38,6 +38,15 @@ http://localhost:3001
 
 https://user-images.githubusercontent.com/15232220/167972575-f4928bc0-7ef3-4d90-9e63-8d23beace54b.mp4
 
+Start of app Get Started to run app
+<img src="./public/assets/images/startbutton.png">
+
+Empty notes app to create a note write the title and note text and hit the save button in the right corner
+<img src="./public/assets/images/notes-no-notes.png">
+
+Having one note in the note taker you can select it/delete it /add a new note to it
+<img src="./public/assets/images/notes-garbage.png">
+
 ## Credits
 
 Sajid Jaber
